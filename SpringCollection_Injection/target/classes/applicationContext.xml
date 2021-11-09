@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="collectionInfo" class="com.CollectionInfo">
+		<property name="names">
+			<list>
+				<value>KK</value>
+				<value>PK</value>
+				<value>KK</value>
+			</list>
+		</property>
+
+		<property name="employeeList">
+			<list>
+				<ref bean="employee1" />
+				<ref bean="employee2" />
+				<ref bean="employee1" />
+			</list>
+		</property>
+
+		<property name="employeeSet">
+			<set>
+				<ref bean="employee1" />
+				<ref bean="employee2" />
+				<ref bean="employee1" />
+			</set>
+		</property>
+
+		<property name="employeeAddressMap">
+			<map>
+				<entry key-ref="employee1" value-ref="address1"></entry>
+				<entry key-ref="employee2" value-ref="address2"></entry>
+			</map>
+		</property>
+
+		<property name="stateCaptital">
+			<props>
+				<prop key="Maharashtra">Mumbai</prop>
+				<prop key="Tamilnadu">Chennai</prop>
+			</props>
+		</property>
+
+		<property name="employeesArray">
+			<!-- <array> <ref bean="employee1" /> <ref bean="employee1" /> </array> -->
+			<list>
+				<ref bean="employee1" />
+				<ref bean="employee1" />
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="employee1" class="com.Employee">
+		<property name="employeeId" value="102883"></property>
+		<property name="employeeName" value="Sean"></property>
+		<property name="salary" value="80000"></property>
+		<property name="address" ref="address1"></property>
+	</bean>
+
+	<bean id="employee2" class="com.Employee">
+		<property name="employeeId" value="102884"></property>
+		<property name="employeeName" value="KK"></property>
+		<property name="salary" value="90000"></property>
+		<property name="address" ref="address2"></property>
+	</bean>
+	
+	
+
+	<bean id="address1" class="com.Address">
+		<property name="addressLine1" value="Address line 1"></property>
+		<property name="addressLine2" value="Address line 2"></property>
+		<property name="city" value="Delhi"></property>
+		<property name="zipCode" value="959049"></property>
+	</bean>
+
+	<bean id="address2" class="com.Address">
+		<property name="addressLine1" value="Address line 1"></property>
+		<property name="addressLine2" value="Address line 2"></property>
+		<property name="city" value="Mumbai"></property>
+		<property name="zipCode" value="879077"></property>
+	</bean>
+
+</beans>
